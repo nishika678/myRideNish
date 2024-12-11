@@ -1,3 +1,4 @@
+const { TokenExpiredError } = require('jsonwebtoken');
 const BlacklistToken = require('../models/blacklistToken.model');
 const captainModel=require('../models/captain.model');
 const captainService=require('../services/captain.service');
@@ -44,12 +45,12 @@ module.exports.loginCaptain=async(req, res, next)=>{
         return res.status(401).json({message: 'Invalid email or password'});
     }
 
-    const isMatch=await captainModel.comparePassword(password, captain.password);
+    const isMatch=await captain.comparePassword(password, captain.password);
     if(!isMatch){
         return res.status(401).json({message: 'Invalid email or password'});
     }
     const token=captain.generateAuthToken();
-    res.cookie({token, captain});
+    res.cookie('token', token);
 
     res.status(200).json({token, captain});
 
