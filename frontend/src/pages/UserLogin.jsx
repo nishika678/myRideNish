@@ -1,4 +1,3 @@
-// import React from 'react'
 
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -8,52 +7,72 @@ const UserLogin = () => {
   const [password, setPassword] = useState('')
   const [userData, setUserData] = useState({})
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    // You would send this data to your server for authentication
-    setUserData({email:email, password:password})
-    // Clear the form fields after successful login
+    setUserData({email: email, password: password})
     setEmail('')
     setPassword('')
   }
 
   return (
-    <div className="p-7 h-screen flex flex-col justify-between">
-      <div>
-      <img className="w-16 mb-10" src="/assets/RaahiLogo.png" alt="" />
-      <form onSubmit={(e)=>{
-        handleSubmit(e)
-      }}>
-        <h3 className="text-lg font-medium mb-2">What's your email?</h3>
-        <input 
-        type="email" 
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required 
-        className="bg-[#eeeeee] mb-7  rounded px-4 py-2 border w-full text-lg placeholder:text-base"
-        placeholder="email@example.com"
-        />
-        <h3 className="text-lg font-medium mb-2">And your password?</h3>
-        <input 
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        className="bg-[#eeeeee] mb-7  rounded px-4 py-2 border w-full text-lg placeholder:text-base"
-        required 
-        placeholder="password" 
-        />
-        <button
-        className="bg-[#111] text-white font-semibold mb-3  rounded px-4 py-2 w-full text-lg placeholder:text-base"
-        >Login</button>
-      </form>
-      <p className="text-center">Do not have an account? <Link to="/Signup" className="text-blue-600">Sign up!</Link></p>
-      </div>
+    <div className="h-screen bg-gradient-to-b from-[#f7f7f7] to-[#ffffff] flex justify-center items-center px-4 py-8">
+      <div className="w-full max-w-md bg-white shadow-lg rounded-lg p-8">
+        <div className="flex justify-center mb-8">
+          <img className="w-24" src="/assets/RaahiLogo.png" alt="Raahi Logo" />
+        </div>
 
-      <div>
-        <Link to="/captain-login" 
-        className="bg-[#10b461] flex items-center justify-center text-white font-semibold mb-5 rounded px-4 py-2 w-full text-lg placeholder:text-base"
-        >Sign in as Captain</Link>
+        <form onSubmit={handleSubmit}>
+          {/* Email Input */}
+          <div className="mb-6">
+            <label htmlFor="email" className="block text-lg font-medium text-gray-700 mb-2">What's your email?</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
+              placeholder="email@example.com"
+            />
+          </div>
+
+          {/* Password Input */}
+          <div className="mb-6">
+            <label htmlFor="password" className="block text-lg font-medium text-gray-700 mb-2">And your password?</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none text-lg"
+              placeholder="password"
+            />
+          </div>
+
+          {/* Login Button */}
+          <button
+            type="submit"
+            className="w-full bg-black text-white font-semibold py-3 rounded-lg mb-4 hover:bg-gray-800 transition duration-300"
+          >
+            Login
+          </button>
+        </form>
+
+        {/* Sign up link */}
+        <p className="text-center">
+          Do not have an account? <Link to="/Signup" className="text-blue-600 hover:underline">Sign up!</Link>
+        </p>
+
+        {/* Captain Login Button */}
+        <div className="mt-6">
+          <Link
+            to="/captain-login"
+            className="w-full bg-[#10b461] flex items-center justify-center text-white font-semibold py-3 rounded-lg  hover:bg-[#0c9b50] transition duration-300"
+          >
+            Sign in as Captain
+          </Link>
+        </div>
       </div>
     </div>
   )
