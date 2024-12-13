@@ -47,7 +47,7 @@ const CaptainLogin = () => {
         className="bg-[#111] text-white font-semibold mb-3  rounded px-4 py-2 w-full text-lg placeholder:text-base"
         >Login</button>
       </form>
-      <p className="text-center">Want to join us? <Link to="/Signup" className="text-blue-600">Register as a Captain</Link></p>
+      <p className="text-center">Want to join us? <Link to="/captain-signup" className="text-blue-600">Register as a Captain</Link></p>
       </div>
 
       <div>
