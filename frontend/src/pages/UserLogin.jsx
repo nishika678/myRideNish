@@ -47,7 +47,7 @@ const UserLogin = () => {
         className="bg-[#111] text-white font-semibold mb-3  rounded px-4 py-2 w-full text-lg placeholder:text-base"
         >Login</button>
       </form>
-      <p className="text-center">Do not have an account?<Link to="/Signup" className="text-blue-600">Sign up!</Link></p>
+      <p className="text-center">Do not have an account? <Link to="/Signup" className="text-blue-600">Sign up!</Link></p>
       </div>
 
       <div>
