@@ -70,7 +70,7 @@ const UserLogin = () => {
             to="/captain-login"
             className="w-full bg-[#10b461] flex items-center justify-center text-white font-semibold py-3 rounded-lg  hover:bg-[#0c9b50] transition duration-300"
           >
-            Sign in as Captain
+            Login as Captain
           </Link>
         </div>
       </div>
