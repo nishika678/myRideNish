@@ -1,15 +1,25 @@
-import { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import axios from 'axios'
+import axios from 'axios'
+import { UserDataContext } from '../context/UserContext'
+
+
 
 const UserSignup = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [userData, setUserData] = useState({})
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
+  const [ firstName, setFirstName ] = useState('')
+  const [ lastName, setLastName ] = useState('')
+  const [ userData, setUserData ] = useState({})
 
   const navigate = useNavigate()
+
+
+
+  const { user, setUser } = useContext(UserDataContext)
+
+
+
 
   const submitHandler = async (e) => {
     e.preventDefault()
@@ -22,21 +32,22 @@ const UserSignup = () => {
       password: password
     }
 
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
+    const response = await axios.post(`http://localhost:4000/users/register`, newUser)
 
     if (response.status === 201) {
       const data = response.data
-      setUserData(data.user)
+      setUser(data.user)
       localStorage.setItem('token', data.token)
       navigate('/home')
     }
+
 
     setEmail('')
     setFirstName('')
     setLastName('')
     setPassword('')
-  }
 
+  }
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center py-8">
       <div className="bg-white p-8 w-full max-w-lg rounded-xl shadow-lg">
