@@ -1,6 +1,9 @@
-import  { useState } from 'react'
+
+import  { useState ,useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { CaptainDataContext } from '../context/CaptainContext'
+import axios from 'axios'
 // import axios from 'axios'
 
 const CaptainSignup = () => {
@@ -17,9 +20,11 @@ const CaptainSignup = () => {
 
   // const { captain, setCaptain } = React.useContext(CaptainDataContext)
 
+  const {captain,setCaptain}=useContext(CaptainDataContext)
+
   const submitHandler = async (e) => {
     e.preventDefault()
-    const captainData = {
+    const captainData={
       fullname: {
         firstname: firstName,
         lastname: lastName
